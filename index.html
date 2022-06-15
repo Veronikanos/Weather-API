@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Weather API</title>
+	<link rel="stylesheet" href="style.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Noto+Sans:ital,wght@0,100;0,300;0,500;0,700;1,700&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/c151ebe296.js" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+	<!-- <video autoplay muted loop id="myVideo">
+		<source src="video/forest-rain.mp4" type="video/mp4" />
+	</video> -->
+	<video autoplay muted loop id="myVideo">
+		<source src="video/Raindrops on tree branches.mp4" type="video/mp4" />
+	</video>
+	<div class="container">
+		<!-- <div class="main_block shadow-lg"> -->
+			<form id="search_city_form">
+				<div class="row">
+					<div class="col-1">
+						<button class="form-control shadow button_input fs-5" id="home_button" type="button"><i class="fa-solid fa-house-user"></i></button>
+					</div>
+					<div class="col-8">
+						<input type="text" autofocus="on" autocomplete="off" class="form-control shadow form_input fs-5" placeholder="Type city...">
+					</div>
+					<div class="col-3">
+						<input class="form-control shadow button_input fs-5" type="submit" value="Search">
+					</div>
+				</div>
+			</form>
+
+			<div class="current_info shadow">
+				<div class="current_day">
+					<h1 class="header1 display-2 text-center fw-normal pt-4"></h1>
+					<h5 class="header5 display-6 text-center fs-2 fw-normal pb-3" id="data_time"></h2>
+
+					<div class="row mb-4">
+						<div class="col-6">
+							<ul class="list fs-4 list-unstyled">
+								<!-- <li>Precipitation: 0%</li> -->
+								<li>Humidity: <span id="humidity"></span>%</li>
+								<li>Wind: <span id="wind"></span> km/h</li>
+							</ul>
+						</div>
+							<div class="col-6 position-relative">
+								<div class="position-absolute top-50 start-50 translate-middle d-inline-flex">
+									<div class="temperature display-1 fw-normal" id="current_temperature"></div>
+									<p class="text_temp active fs-4" id="celcius"><a href="#">°C </a><p/>
+									<p class="text_temp active fs-4" id="celcius"> |<p/>
+									<p class="text_temp fs-4" id="fahrenheit"><a href="#">°F</a></p>
+								</div>
+							</div>
+					</div>
+					<div class="row pb-5">
+						<div class="col-6 d-flex align-items-end">
+							<div>
+								<h3 class="header3 display-5" id="status_weather"></h3>
+								<h5  class="header5">feels like: <span id="feels_like"></span>°</h5>
+							</div>
+						</div>
+						<div class="col-6 position-relative">
+							<!-- <img class="image_icon" src="2272194.png" alt="cloudly_icon"> -->
+							<i class="image_icon display-1 fa-solid fa-cloud-sun position-absolute top-50 start-50 translate-middle"></i>
+					</div>
+					</div>
+				</div>
+			</div>
+			<div class="current_day">
+				<ul class="row p-4">
+					<li class="col-2 current_info">Thirsday</li>
+					<li class="col-2 current_info">Friday</li>
+					<li class="col-2 current_info">Saturday</li>
+					<li class="col-2 current_info">Sunday</li>
+					<li class="col-2 current_info">Monday</li>
+				</ul>
+			</div>
+
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>
