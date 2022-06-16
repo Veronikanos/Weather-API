@@ -21,54 +21,53 @@
 		<source src="video/Raindrops on tree branches.mp4" type="video/mp4" />
 	</video>
 	<div class="container">
-		<!-- <div class="main_block shadow-lg"> -->
+		<div class="main_block">
 			<form id="search_city_form">
 				<div class="row">
-					<div class="col-1">
-						<button class="form-control shadow button_input fs-5" id="home_button" type="button"><i class="fa-solid fa-house-user"></i></button>
+					<div class="col-2">
+						<button class="col-12 btn shadow button_input" id="home_button" type="button"><i class="fa-solid fa-house-user"></i></button>
 					</div>
-					<div class="col-8">
-						<input type="text" autofocus="on" autocomplete="off" class="form-control shadow form_input fs-5" placeholder="Type city...">
+					<div class="col-7">
+						<input type="text" autofocus="on" autocomplete="off" class="col-12 form-control shadow form_input" placeholder="Type city...">
 					</div>
 					<div class="col-3">
-						<input class="form-control shadow button_input fs-5" type="submit" value="Search">
+						<input class="col-12 btn shadow button_input" type="submit" value="Search">
 					</div>
 				</div>
 			</form>
 
 			<div class="current_info shadow">
 				<div class="current_day">
-					<h1 class="header1 display-2 text-center fw-normal pt-4"></h1>
-					<h5 class="header5 display-6 text-center fs-2 fw-normal pb-3" id="data_time"></h2>
+					<h1 class="header1 text-center fw-normal"></h1>
+					<h4 class="text-center" id="data_time"></h4>
 
-					<div class="row mb-4">
+					<div class="row status">
 						<div class="col-6">
-							<ul class="list fs-4 list-unstyled">
+							<ul class="list list-unstyled">
 								<!-- <li>Precipitation: 0%</li> -->
 								<li>Humidity: <span id="humidity"></span>%</li>
 								<li>Wind: <span id="wind"></span> km/h</li>
 							</ul>
 						</div>
 							<div class="col-6 position-relative">
-								<div class="position-absolute top-50 start-50 translate-middle d-inline-flex">
-									<div class="temperature display-1 fw-normal" id="current_temperature"></div>
-									<p class="text_temp active fs-4" id="celcius"><a href="#">°C </a><p/>
-									<p class="text_temp active fs-4" id="celcius"> |<p/>
-									<p class="text_temp fs-4" id="fahrenheit"><a href="#">°F</a></p>
+								<div class="position-absolute top-50 start-50 translate-middle d-inline-flex ">
+									<div class="temperature display-3 fw-normal" id="current_temperature"></div>
+									<span class="text_temp active" id="celcius"><a href="#">°C </a></span>
+									<span class="text_temp active" id="celcius"> |</span>
+									<span class="text_temp" id="fahrenheit"><a href="#">°F</a></span>
 								</div>
 							</div>
 					</div>
-					<div class="row pb-5">
-						<div class="col-6 d-flex align-items-end">
+					<div class="row status">
+						<div class="col-6 d-flex align-items-center">
+							<i class="image_icon display-2 fa-solid fa-cloud-sun"></i>
+					</div>
+					<div class="col-6 d-flex align-items-end">
 							<div>
-								<h3 class="header3 display-5" id="status_weather"></h3>
-								<h5  class="header5">feels like: <span id="feels_like"></span>°</h5>
+								<h3 class="header3" id="status_weather"></h3>
+								<h6>feels like: <span id="feels_like"></span>°</h6>
 							</div>
 						</div>
-						<div class="col-6 position-relative">
-							<!-- <img class="image_icon" src="2272194.png" alt="cloudly_icon"> -->
-							<i class="image_icon display-1 fa-solid fa-cloud-sun position-absolute top-50 start-50 translate-middle"></i>
-					</div>
 					</div>
 				</div>
 			</div>
@@ -81,7 +80,7 @@
 					<li class="col-2 current_info">Monday</li>
 				</ul>
 			</div>
-
+		</div>
 	</div>
 
 	<script src="script.js"></script>
