@@ -84,28 +84,46 @@ h1{
 	padding-top: 7%;
 }
 
-h4 {
-	text-shadow: 2px 2px 10px rgb(254, 254, 255);
-}
-
 .list{
 	margin: 5% 0;
 	padding: 0;
 	/* font-size: 100%; */
 }
 
-.text_temp a{
+.padding_block_top{
+	padding-bottom: 3%;
+}
+
+.padding_block_bottom{
+	padding-bottom: 7%;
+	text-shadow: 2px 2px 10px rgb(208, 208, 211);
+}
+
+.temperature_block{
+	display: inline-flex;
+}
+
+.change_units{
+	position: relative;
+	top: 6px;
+	padding-left: 15px;
+}
+
+.change_units a{
 	text-decoration: none;
 	color: #fff9 !important;
 }
-
-.active,
+.separator,
 .active a{
 	color: #f1efef !important;
 }
 
-.text_temp a:hover{
+.change_units a:hover{
 	color: #343a10;
+}
+
+#icon{
+	width: 50%;
 }
 
 @media (max-width: 767px) {
@@ -120,10 +138,3 @@ h4 {
 	}
 }
 
-.padding_block_top{
-	padding-bottom: 3%;
-}
-
-.padding_block_bottom{
-	padding-bottom: 7%;
-}

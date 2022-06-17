@@ -39,8 +39,8 @@
 			<div class="current_info shadow">
 				<div class="current_day">
 					<h1 class="header1 text-center fw-normal"></h1>
-					<h4 class="text-center padding_block_bottom" id="data_time"></h4>
-
+					<p class="text-center padding_block_bottom">Last updated: <span id="data_time"></span>
+						</p>
 					<div class="row padding_block_top">
 						<div class="col-6">
 							<ul class="list list-unstyled">
@@ -49,20 +49,20 @@
 								<li>Wind: <span id="wind"></span> km/h</li>
 							</ul>
 						</div>
-							<div class="col-6">
-								<div class="d-inline-flex ">
-									<div class="temperature display-3 fw-normal" id="current_temperature"></div>
-									<span class="text_temp active" id="celcius"><a href="#">°C </a></span>
-									<span class="text_temp active" id="celcius"> |</span>
-									<span class="text_temp" id="fahrenheit"><a href="#">°F</a></span>
+							<div class="col-6 temperature_block">
+								<div class="temperature display-3 fw-normal" id="current_temperature"></div>
+								<div class="change_units">
+									<span class="active" id="celcius"><a href="#">°C </a></span>
+									<span class="separator"> |</span>
+									<span id="fahrenheit"><a href="#">°F</a></span>
+									</div>
 								</div>
-							</div>
 					</div>
 					<div class="row padding_block_bottom">
 						<div class="col-6 d-flex align-items-center">
-							<i class="image_icon display-2 fa-solid fa-cloud-sun"></i>
+							<img src="" alt="" id="icon">
 					</div>
-					<div class="col-6 d-flex align-items-end">
+					<div class="col-6 d-flex align-items-center">
 							<div>
 								<h4 class="header3" id="status_weather"></h4>
 								<h6>feels like: <span id="feels_like"></span>°</h6>

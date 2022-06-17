@@ -1,5 +1,24 @@
 'use strict';
 
+function getZero(timeNum){
+	if (timeNum < 10 && timeNum >= 0){
+		return `0${timeNum}`;
+	} else {
+		return timeNum;
+	}
+}
+
+function setDate(timestamp) {
+
+	const time = new Date(timestamp);
+	const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+				dayOfTheWeek = time.getDay(),
+				hours = getZero(time.getHours()),
+				minutes = getZero(time.getMinutes());
+
+	return(`${weekDays[dayOfTheWeek]} ${hours}:${minutes}`);
+}
+
 function getResponseWithCurrentTemp(currUrl){
 	axios.get(currUrl).then((response) => {
 		if (response.request.status === 200) {
@@ -9,9 +28,13 @@ function getResponseWithCurrentTemp(currUrl){
 			const wind = document.querySelector("#wind");
 			const feelsLike = document.querySelector("#feels_like");
 			const statusWeather = document.querySelector("#status_weather");
+			const currentDataTime = document.querySelector("#data_time");
+			const icon = document.querySelector("#icon");
 
-			console.log(response);
+			icon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+			icon.setAttribute("alt", `${response.data.weather[0].description}`);
 
+			currentDataTime.innerHTML = setDate(response.data.dt * 1000);
 			temperature.innerHTML = celsiusTemp;
 			humidity.innerHTML = response.data.main.humidity;
 			wind.innerHTML = Math.round(Number(response.data.wind.speed) * 3.6);
@@ -22,15 +45,6 @@ function getResponseWithCurrentTemp(currUrl){
 			let country = response.data.sys.country;
 			let regionNames = new Intl.DisplayNames(['en'], {type: 'region'});
 			h1City.innerHTML = `${response.data.name}, ${regionNames.of(country)}`;
-
-			// if (regionNames.of(country) === "Russia"){
-			// 		h1City.innerHTML = `${response.data.name}, Раша-параша`;
-			// 	} 
-			// 	else if (regionNames.of(country) === "Ukraine"){
-			// 		h1City.innerHTML = `${response.data.name}, Слава Україні! Смерть ворогам! Батько наш - Бандера!`;
-			// 	} else {
-			// 		h1City.innerHTML = `${response.data.name}, ${regionNames.of(country)}`;
-			// 	}
 		} 
 	});
 }
@@ -41,39 +55,15 @@ function findPosition(position){
 
 	homeButton.addEventListener("click", (event) => {
 		event.preventDefault();
-
 		getResponseWithCurrentTemp(apiUrl);
-		currentDataTime.innerHTML = setDate(new Date());
 	});
 }
 
 function showSearchedCity(city){
 	let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 	getResponseWithCurrentTemp(apiUrl);
-	// console.log(searchingCity.value);
 	searchingCity.value = '';
 }
-
-function getZero(timeNum){
-	if (timeNum < 10 && timeNum >= 0){
-		return `0${timeNum}`;
-	} else {
-		return timeNum;
-	}
-}
-
-function setDate(time) {
-	const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-				dayOfTheWeek = time.getDay(),
-				hours = getZero(time.getHours()),
-				minutes = getZero(time.getMinutes());
-
-	return(`${weekDays[dayOfTheWeek]} ${hours}:${minutes}`);
-}
-
-const currentDataTime = document.querySelector("#data_time");
-currentDataTime.innerHTML = setDate(new Date());
-
 
 // сhange city from search line
 const apiKey = "1a393094c95cd8490917aab767379862",
@@ -91,35 +81,4 @@ searchCityButton.addEventListener("submit", (event) => {
 		showSearchedCity(searchingCity.value);
 		event.preventDefault();
 	}
-	currentDataTime.innerHTML = setDate(new Date());
 });
-
-
-// switch temperature
-
-// function convertToFahrenheit(event) {
-// 	event.preventDefault();
-// 	if (celcius.classList.contains("active")){
-// 		temperature.innerHTML = Math.round((Number(temperature.innerText) * 9/5) + 32);
-// 		celcius.classList.remove("active");
-// 		fahrenheit.classList.add("active");
-// 	}
-// }
-
-// function convertToCelcius(event) {
-// 	event.preventDefault();
-// 	temperature.innerHTML = constantTempCelsius;
-// 	if (fahrenheit.classList.contains("active")){
-// 		fahrenheit.classList.remove("active");
-// 		celcius.classList.add("active");
-// 	}
-// }
-
-// const celcius = document.querySelector("#celcius"),
-// 			fahrenheit = document.querySelector("#fahrenheit"),
-// 			temperature = document.querySelector("#current_temperature"),
-// 			constantTempCelsius = Number(temperature.innerHTML);
-
-// 	fahrenheit.addEventListener("click", convertToFahrenheit);
-// 	celcius.addEventListener("click", convertToCelcius);
-
