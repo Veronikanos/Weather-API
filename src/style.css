@@ -1,9 +1,14 @@
 html{
 	font-size: 24px;
+	max-height: 100vh;
+}
+
+body{
+	height: 60%;
 }
 
 .main_block{
-	width: 60%;
+	max-width: 60%;
 	margin: 0 auto;
 }
 
@@ -11,7 +16,6 @@ form{
 	padding: 3% 0;
 	color: #e0e0e0 !important;
 }
-
 
 div .button_input,
 div .form_input {
