@@ -78,6 +78,7 @@ const apiKey = "1a393094c95cd8490917aab767379862",
 
 let celsiusTemp;
 
+
 showSearchedCity(defaultCity);
 navigator.geolocation.getCurrentPosition(findPosition);
 
@@ -105,3 +106,22 @@ fahrenheitLink.addEventListener("click", (event) => {
 	celciusLink.classList.remove("active");
 	fahrenheitLink.classList.add("active");
 });
+
+
+const forecastWeek = ["Fri", "Sat", "Sun", "Mon", "Tue"];const forecastElement = document.querySelector("#forecast");
+let forecastHTML = `<div class="row pt-4">`;
+
+forecastWeek.forEach((day) => {
+	forecastHTML = forecastHTML + 
+	`<div class="col-2 current_info forecast_week_day pt-2 pb-2">
+		${day}
+		<img src="icons/13n.svg" alt="">
+		<div class="forecast_temperature row">
+			<span class="forecast_temperature_max col-6">18°</span>
+			<span class="forecast_temperature_min col-6">12°</span>
+		</div>
+	</div>`;
+});
+
+forecastHTML = forecastHTML + `</div>`;
+forecastElement.innerHTML = forecastHTML;

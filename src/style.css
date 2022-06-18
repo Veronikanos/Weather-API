@@ -9,7 +9,9 @@ html{
 
 form{
 	padding: 3% 0;
+	color: #e0e0e0 !important;
 }
+
 
 div .button_input,
 div .form_input {
@@ -41,6 +43,7 @@ div .button_input:hover{
 	font-family: 'Noto Sans', sans-serif;
 	/* font-family: 'Patrick Hand SC', cursive; */
 		/* font-family: 'Fredoka One', cursive; */
+	/* color: #f1efef; */
 	backdrop-filter: blur(10px);
 	background: linear-gradient(114.76deg,rgba(255, 255, 255, 0.4) 35%,rgba(255, 255, 255, 0) 98.68%);
 }
@@ -71,7 +74,8 @@ div .button_input:hover{
 .header1,
 .temperature,
 .header3, 
-.image_icon {
+.image_icon,
+.forecast_temperature {
 	color: #f1efef;
 	text-shadow: 3px 3px 6px rgb(30, 30, 31);
 }
@@ -94,9 +98,10 @@ h1{
 	padding-bottom: 3%;
 }
 
-.padding_block_bottom{
+.padding_block_bottom, .forecast_week_day{
 	padding-bottom: 7%;
 	text-shadow: 2px 2px 10px rgb(208, 208, 211);
+	text-align: center;
 }
 
 .temperature_block{
@@ -124,7 +129,21 @@ h1{
 }
 
 #icon{
-	width: 50%;
+	width: 60%;
+}
+
+.forecast_temperature{
+	color: #f1efef;
+	/* display: inline-flex; */
+}
+
+.forecast_temperature span{
+	/* display: inline-block; */
+	/* justify-content: flex-end; */
+}
+
+.forecast_temperature_min{
+	opacity: 70%;
 }
 
 @media (max-width: 767px) {
