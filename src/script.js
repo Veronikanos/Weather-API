@@ -22,28 +22,32 @@ function setDate(timestamp) {
 function getResponseWithCurrentTemp(currUrl){
 	axios.get(currUrl).then((response) => {
 		if (response.request.status === 200) {
-			const celsiusTemp = Math.round(response.data.main.temp);
+			celsiusTemp = response.data.main.temp;
 			const temperature = document.querySelector("#current_temperature");
 			const humidity = document.querySelector("#humidity");
 			const wind = document.querySelector("#wind");
-			const feelsLike = document.querySelector("#feels_like");
+			// const feelsLike = document.querySelector("#feels_like");
 			const statusWeather = document.querySelector("#status_weather");
 			const currentDataTime = document.querySelector("#data_time");
-
 			const icon = document.querySelector("#icon");
 			icon.setAttribute("src", `icons/${response.data.weather[0].icon}.svg`);
 			icon.setAttribute("alt", `${response.data.weather[0].description}`);
 
 			currentDataTime.innerHTML = setDate(response.data.dt * 1000);
-			temperature.innerHTML = celsiusTemp;
+			temperature.innerHTML = Math.round(celsiusTemp);
 			humidity.innerHTML = response.data.main.humidity;
 			wind.innerHTML = Math.round(Number(response.data.wind.speed) * 3.6);
-			feelsLike.innerHTML = Math.round(response.data.main.feels_like);
+			// feelsLike.innerHTML = Math.round(response.data.main.feels_like);
 			statusWeather.innerHTML = response.data.weather[0].description;
 
 			let country = response.data.sys.country;
 			let regionNames = new Intl.DisplayNames(['en'], {type: 'region'});
 			h1City.innerHTML = `${response.data.name}, ${regionNames.of(country)}`;
+
+			if (fahrenheitLink.classList.contains("active")) {
+				celciusLink.classList.add("active");
+				fahrenheitLink.classList.remove("active");
+			}
 		} 
 	});
 }
@@ -51,6 +55,7 @@ function getResponseWithCurrentTemp(currUrl){
 function findPosition(position){
 	const homeButton = document.querySelector("#home_button");
 	let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+
 	homeButton.addEventListener("click", (event) => {
 		event.preventDefault();
 		getResponseWithCurrentTemp(apiUrl);
@@ -63,20 +68,40 @@ function showSearchedCity(city){
 	searchingCity.value = '';
 }
 
-// сhange city from search line
 const apiKey = "1a393094c95cd8490917aab767379862",
 			searchingCity = document.querySelector(".form_input"),
 			searchCityButton = document.querySelector("form"),
-			h1City = document.querySelector("h1");
+			celciusLink = document.querySelector("#celcius"),
+			fahrenheitLink = document.querySelector("#fahrenheit"),
+			h1City = document.querySelector("h1"),
+			defaultCity = "Kyiv";
 
-const defaultCity = "Kyiv";
+let celsiusTemp;
+
 showSearchedCity(defaultCity);
 navigator.geolocation.getCurrentPosition(findPosition);
 
-
 searchCityButton.addEventListener("submit", (event) => {
+	event.preventDefault();
 	if (searchingCity.value !== '') {
 		showSearchedCity(searchingCity.value);
-		event.preventDefault();
 	}
+});
+
+// clicking on temperature icons and converting units;
+
+celciusLink.addEventListener("click", (event) => {
+	event.preventDefault();
+	let temperatureElement = document.querySelector("#current_temperature");
+	temperatureElement.innerHTML = Math.round(celsiusTemp);
+	celciusLink.classList.add("active");
+	fahrenheitLink.classList.remove("active");
+});
+
+fahrenheitLink.addEventListener("click", (event) => {
+	event.preventDefault();
+	let temperatureElement = document.querySelector("#current_temperature");
+	temperatureElement.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
+	celciusLink.classList.remove("active");
+	fahrenheitLink.classList.add("active");
 });

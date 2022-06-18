@@ -116,6 +116,7 @@ h1{
 .separator,
 .active a{
 	color: #f1efef !important;
+	cursor: default;
 }
 
 .change_units a:hover{
