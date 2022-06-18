@@ -29,9 +29,9 @@ function getResponseWithCurrentTemp(currUrl){
 			const feelsLike = document.querySelector("#feels_like");
 			const statusWeather = document.querySelector("#status_weather");
 			const currentDataTime = document.querySelector("#data_time");
-			const icon = document.querySelector("#icon");
 
-			icon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+			const icon = document.querySelector("#icon");
+			icon.setAttribute("src", `icons/${response.data.weather[0].icon}.svg`);
 			icon.setAttribute("alt", `${response.data.weather[0].description}`);
 
 			currentDataTime.innerHTML = setDate(response.data.dt * 1000);
@@ -40,7 +40,6 @@ function getResponseWithCurrentTemp(currUrl){
 			wind.innerHTML = Math.round(Number(response.data.wind.speed) * 3.6);
 			feelsLike.innerHTML = Math.round(response.data.main.feels_like);
 			statusWeather.innerHTML = response.data.weather[0].description;
-			// statusWeather.innerHTML = response.data.weather[0].main;
 
 			let country = response.data.sys.country;
 			let regionNames = new Intl.DisplayNames(['en'], {type: 'region'});
@@ -52,7 +51,6 @@ function getResponseWithCurrentTemp(currUrl){
 function findPosition(position){
 	const homeButton = document.querySelector("#home_button");
 	let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
-
 	homeButton.addEventListener("click", (event) => {
 		event.preventDefault();
 		getResponseWithCurrentTemp(apiUrl);
