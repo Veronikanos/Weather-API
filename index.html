@@ -14,13 +14,14 @@
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-	<!-- <video autoplay muted loop id="myVideo">
-		<source src="video/forest-rain.mp4" type="video/mp4" />
-	</video> -->
-
+	<!-- <img src="stephen-leonardi-ei1J5Pwax40-unsplash.jpg" id="myVideo" alt=""> -->
 	<video autoplay muted loop id="myVideo">
-		<source src="../video/Raindrops on tree branches.mp4" type="video/mp4"/>
+		<source src="video/forest-rain.mp4" type="video/mp4" />
 	</video>
+
+	<!-- <video autoplay muted loop id="myVideo">
+		<source src="../video/Raindrops on tree branches.mp4" type="video/mp4"/>
+	</video> -->
 	<div class="container">
 		<div class="main_block">
 			<form id="search_city_form">
@@ -53,9 +54,7 @@
 							<div class="col-6 temperature_block">
 								<div class="temperature display-3 fw-normal" id="current_temperature"></div>
 								<div class="change_units">
-									<span class="active" id="celcius"><a href="#">°C </a></span>
-									<span class="separator"> |</span>
-									<span id="fahrenheit"><a href="#">°F</a></span>
+									<span class="active" id="celcius">°C</span>
 									</div>
 								</div>
 					</div>
@@ -66,7 +65,7 @@
 						<div class="col-6 d-flex align-items-center">
 							<div>
 								<h4 class="header3" id="status_weather"></h4>
-							<!-- <h6>feels like: <span id="feels_like"></span>°</h6> -->
+							<h6>feels like: <span id="feels_like"></span>°</h6>
 							</div>
 						</div>
 					</div>

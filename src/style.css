@@ -5,6 +5,7 @@ html{
 body{
 	min-height: 100vh;
 	width: 100%;
+	/* background-image: url(../stephen-leonardi-ei1J5Pwax40-unsplash.jpg); */
 }
 
 .main_block{
@@ -79,7 +80,8 @@ div .button_input:hover{
 .temperature,
 .header3, 
 .image_icon,
-.forecast_temperature {
+.forecast_temperature,
+.change_units {
 	color: #f1efef;
 	text-shadow: 3px 3px 6px rgb(30, 30, 31);
 }
@@ -116,20 +118,6 @@ h1{
 	position: relative;
 	top: 6px;
 	padding-left: 15px;
-}
-
-.change_units a{
-	text-decoration: none;
-	color: #fff9 !important;
-}
-.separator,
-.active a{
-	color: #f1efef !important;
-	cursor: default;
-}
-
-.change_units a:hover{
-	color: #343a10;
 }
 
 #icon{

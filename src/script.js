@@ -31,7 +31,7 @@ function getResponseWithCurrentTemp(currUrl){
 			const temperature = document.querySelector("#current_temperature");
 			const humidity = document.querySelector("#humidity");
 			const wind = document.querySelector("#wind");
-			// const feelsLike = document.querySelector("#feels_like");
+			const feelsLike = document.querySelector("#feels_like");
 			const statusWeather = document.querySelector("#status_weather");
 			const currentDataTime = document.querySelector("#data_time");
 			const icon = document.querySelector("#icon");
@@ -42,17 +42,12 @@ function getResponseWithCurrentTemp(currUrl){
 			temperature.innerHTML = Math.round(celsiusTemp);
 			humidity.innerHTML = response.data.main.humidity;
 			wind.innerHTML = Math.round(Number(response.data.wind.speed) * 3.6);
-			// feelsLike.innerHTML = Math.round(response.data.main.feels_like);
+			feelsLike.innerHTML = Math.round(response.data.main.feels_like);
 			statusWeather.innerHTML = response.data.weather[0].description;
 
 			let country = response.data.sys.country;
 			let regionNames = new Intl.DisplayNames(['en'], {type: 'region'});
 			h1City.innerHTML = `${response.data.name}, ${regionNames.of(country)}`;
-
-			if (fahrenheitLink.classList.contains("active")) {
-				celciusLink.classList.add("active");
-				fahrenheitLink.classList.remove("active");
-			}
 
 			// console.log(response.data.coord);
 			getForecast(response.data.coord);
@@ -95,24 +90,6 @@ searchCityButton.addEventListener("submit", (event) => {
 	if (searchingCity.value !== '') {
 		showSearchedCity(searchingCity.value);
 	}
-});
-
-// clicking on temperature icons and converting units;
-
-celciusLink.addEventListener("click", (event) => {
-	event.preventDefault();
-	let temperatureElement = document.querySelector("#current_temperature");
-	temperatureElement.innerHTML = Math.round(celsiusTemp);
-	celciusLink.classList.add("active");
-	fahrenheitLink.classList.remove("active");
-});
-
-fahrenheitLink.addEventListener("click", (event) => {
-	event.preventDefault();
-	let temperatureElement = document.querySelector("#current_temperature");
-	temperatureElement.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
-	celciusLink.classList.remove("active");
-	fahrenheitLink.classList.add("active");
 });
 
 //___________________________
