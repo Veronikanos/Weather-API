@@ -19,6 +19,11 @@ function setDate(timestamp) {
 	return(`${weekDays[dayOfTheWeek]} ${hours}:${minutes}`);
 }
 
+function getForecast(coordinates){
+	let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+	axios.get(apiUrl).then(displayForecast);
+}
+
 function getResponseWithCurrentTemp(currUrl){
 	axios.get(currUrl).then((response) => {
 		if (response.request.status === 200) {
@@ -48,6 +53,9 @@ function getResponseWithCurrentTemp(currUrl){
 				celciusLink.classList.add("active");
 				fahrenheitLink.classList.remove("active");
 			}
+
+			// console.log(response.data.coord);
+			getForecast(response.data.coord);
 		} 
 	});
 }
@@ -107,21 +115,37 @@ fahrenheitLink.addEventListener("click", (event) => {
 	fahrenheitLink.classList.add("active");
 });
 
+//___________________________
 
-const forecastWeek = ["Fri", "Sat", "Sun", "Mon", "Tue"];const forecastElement = document.querySelector("#forecast");
-let forecastHTML = `<div class="row pt-4">`;
+function formateDay(timestamp){
+	const date = new Date(timestamp * 1000);
+	const day = date.getDay();
+	const forecastWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+	return forecastWeek[day];
+}
 
-forecastWeek.forEach((day) => {
-	forecastHTML = forecastHTML + 
-	`<div class="col-2 current_info forecast_week_day pt-2 pb-2">
-		${day}
-		<img src="icons/13n.svg" alt="">
-		<div class="forecast_temperature row">
-			<span class="forecast_temperature_max col-6">18°</span>
-			<span class="forecast_temperature_min col-6">12°</span>
-		</div>
-	</div>`;
-});
+function displayForecast(response){
+	const forecast = response.data.daily;
 
-forecastHTML = forecastHTML + `</div>`;
-forecastElement.innerHTML = forecastHTML;
+	console.log(response);
+
+	const forecastElement = document.querySelector("#forecast");
+	let forecastHTML = `<div class="row pt-4">`;
+
+	forecast.forEach((day, index) => {
+		if (index > 0 && index < 6){
+		forecastHTML +=
+		`<div class="col-2 current_info forecast_week_day pt-2 pb-2">
+			${formateDay(day.dt)}
+			<img src="icons/${day.weather[0].icon}.svg" alt="${day.weather[0].description}">
+			<div class="forecast_temperature row">
+				<span class="forecast_temperature_max col-6">${Math.round(day.temp.max)}°</span>
+				<span class="forecast_temperature_min col-6">${Math.round(day.temp.min)}°</span>
+			</div>
+		</div>`;
+		}
+	});
+
+	forecastHTML = forecastHTML + `</div>`;
+	forecastElement.innerHTML = forecastHTML;
+}
