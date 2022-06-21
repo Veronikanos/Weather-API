@@ -31,7 +31,6 @@ function getResponseWithCurrentTemp(currUrl){
 			const temperature = document.querySelector("#current_temperature");
 			const humidity = document.querySelector("#humidity");
 			const wind = document.querySelector("#wind");
-			// const feelsLike = document.querySelector("#feels_like");
 			const statusWeather = document.querySelector("#status_weather");
 			const currentDataTime = document.querySelector("#data_time");
 			const icon = document.querySelector("#icon");
@@ -42,14 +41,12 @@ function getResponseWithCurrentTemp(currUrl){
 			temperature.innerHTML = Math.round(celsiusTemp);
 			humidity.innerHTML = response.data.main.humidity;
 			wind.innerHTML = Math.round(Number(response.data.wind.speed) * 3.6);
-			// feelsLike.innerHTML = Math.round(response.data.main.feels_like);
 			statusWeather.innerHTML = response.data.weather[0].description;
 
 			let country = response.data.sys.country;
 			let regionNames = new Intl.DisplayNames(['en'], {type: 'region'});
 			h1City.innerHTML = `${response.data.name}, ${regionNames.of(country)}`;
 
-			// console.log(response.data.coord);
 			getForecast(response.data.coord);
 		} 
 	});
@@ -107,13 +104,20 @@ function displayForecast(response){
 	const maxUvIndex = document.querySelector("#max_uv_index");
 	const maxTemp = document.querySelector("#max_t");
 	const minTemp = document.querySelector("#min_t");
-
-	uvIndex.innerHTML = `<img src="icons/extra icons/uv-index-${Math.round(current.uvi)}.svg" alt="uv index ${current.uvi}">`;
+	const precipitation = document.querySelector("#precipitation");
+		console.log(forecast);
 
 	let forecastHTML = `<div class="row pt-4">`;
 	forecast.forEach((day, index) => {
+
 		if (index === 0){
+			if (Math.round(current.uvi) === 0){
+				uvIndex.innerHTML = `< <img src="icons/extra icons/uv-index-1.svg" alt="uv index ${current.uvi}">`;
+			} else {
+				uvIndex.innerHTML = `<img src="icons/extra icons/uv-index-${Math.round(current.uvi)}.svg" alt="uv index ${current.uvi}">`;
+			}
 			maxUvIndex.innerHTML = `<img src="icons/extra icons/uv-index-${Math.round(day.uvi)}.svg" alt="uv index ${day.uvi}">`;
+			precipitation.innerHTML = day.pop * 100;
 			maxTemp.innerHTML = Math.round(day.temp.max);
 			minTemp.innerHTML = Math.round(day.temp.min);
 		}
@@ -123,8 +127,8 @@ function displayForecast(response){
 			${formateDay(day.dt)}
 			<img src="icons/${day.weather[0].icon}.svg" alt="${day.weather[0].description}">
 			<div class="forecast_temperature row">
-				<span>${Math.round(day.temp.max)}°</span>
-				<span>${Math.round(day.temp.min)}°</span>
+				<span>&#9650; ${Math.round(day.temp.max)}°</span>
+				<span>&#9660; ${Math.round(day.temp.min)}°</span>
 			</div>
 		</div>`;
 		}
