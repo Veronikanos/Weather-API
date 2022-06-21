@@ -36,38 +36,49 @@
 			<div class="current_info shadow">
 				<div class="current_day">
 					<h1 class="header1 text-center fw-normal"></h1>
-					<p class="text-center padding_block_bottom">Last updated: <span id="data_time"></span>
-						</p>
+					<h6 class="text-center">Last updated: <span id="data_time"></span></h6>
 					<div class="row padding_block_top">
 						<div class="col-6">
 							<ul class="list list-unstyled">
 								<!-- <li>Precipitation: 0%</li> -->
 								<li>Humidity: <span id="humidity"></span>%</li>
 								<li>Wind: <span id="wind"></span> km/h</li>
+								<li>
+									Max: <span id="max_t">25</span>° • Min: <span id="min_t">14</span>°
+								</li>
 							</ul>
 						</div>
-							<div class="col-6 temperature_block">
+							<div class="col-6 temperature_block align-items-center">
 								<div class="temperature display-3 fw-normal" id="current_temperature"></div>
 								<div class="change_units">
 									<span class="active" id="celcius">°C</span>
 									</div>
 								</div>
 					</div>
-					<div class="row padding_block_bottom">
+					<div class="row ">
 						<div class="col-6 d-flex align-items-center">
 							<img src="" alt="" id="icon">
 						</div>
 						<div class="col-6 d-flex align-items-center">
-							<div>
 								<h4 class="header3" id="status_weather"></h4>
-							<h6>feels like: <span id="feels_like"></span>°</h6>
-							</div>
+								<!-- <h6>feels like: <span id="feels_like"></span>°</h6> -->
 						</div>
 					</div>
 			</div>
 		</div>
+		<div class="main_block current_info p-2">
+			<div class="current_day">
+				<div class="row">
+					<div class="col-6">UV index: <span id="uv_index"></span></div>
+					<div class="col-6">Max UVI: <span id="max_uv_index"></span></div>
+					<div class="w-100"></div>
+					<!-- <div class="col-6">Max t: <span id="max_t">55</span>°</div>
+					<div class="col-6">Min t: <span id="min_t">55</span></div> -->
+				</div>
+			</div>
+		</div>
 				<div class="weather_forecast" id="forecast"></div>
-			<p class="main_block current_info p-1"><a href="https://github.com/Veronikanos/Weather-API">Open-source code</a> by Veronika Tlostiuk</p>
+			<p class="main_block current_info p-2"><a href="https://github.com/Veronikanos/Weather-API">Open-source code</a> by Veronika Tlostiuk</p>
 		</div>
 	</div>
 

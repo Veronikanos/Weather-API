@@ -31,7 +31,7 @@ function getResponseWithCurrentTemp(currUrl){
 			const temperature = document.querySelector("#current_temperature");
 			const humidity = document.querySelector("#humidity");
 			const wind = document.querySelector("#wind");
-			const feelsLike = document.querySelector("#feels_like");
+			// const feelsLike = document.querySelector("#feels_like");
 			const statusWeather = document.querySelector("#status_weather");
 			const currentDataTime = document.querySelector("#data_time");
 			const icon = document.querySelector("#icon");
@@ -42,7 +42,7 @@ function getResponseWithCurrentTemp(currUrl){
 			temperature.innerHTML = Math.round(celsiusTemp);
 			humidity.innerHTML = response.data.main.humidity;
 			wind.innerHTML = Math.round(Number(response.data.wind.speed) * 3.6);
-			feelsLike.innerHTML = Math.round(response.data.main.feels_like);
+			// feelsLike.innerHTML = Math.round(response.data.main.feels_like);
 			statusWeather.innerHTML = response.data.weather[0].description;
 
 			let country = response.data.sys.country;
@@ -74,8 +74,6 @@ function showSearchedCity(city){
 const apiKey = "1a393094c95cd8490917aab767379862",
 			searchingCity = document.querySelector(".form_input"),
 			searchCityButton = document.querySelector("form"),
-			celciusLink = document.querySelector("#celcius"),
-			fahrenheitLink = document.querySelector("#fahrenheit"),
 			h1City = document.querySelector("h1"),
 			defaultCity = "Kyiv";
 
@@ -103,21 +101,30 @@ function formateDay(timestamp){
 
 function displayForecast(response){
 	const forecast = response.data.daily;
-
-	console.log(response);
-
+	const current = response.data.current;
 	const forecastElement = document.querySelector("#forecast");
-	let forecastHTML = `<div class="row pt-4">`;
+	const uvIndex = document.querySelector("#uv_index");
+	const maxUvIndex = document.querySelector("#max_uv_index");
+	const maxTemp = document.querySelector("#max_t");
+	const minTemp = document.querySelector("#min_t");
 
+	uvIndex.innerHTML = `<img src="icons/extra icons/uv-index-${Math.round(current.uvi)}.svg" alt="uv index ${current.uvi}">`;
+
+	let forecastHTML = `<div class="row pt-4">`;
 	forecast.forEach((day, index) => {
+		if (index === 0){
+			maxUvIndex.innerHTML = `<img src="icons/extra icons/uv-index-${Math.round(day.uvi)}.svg" alt="uv index ${day.uvi}">`;
+			maxTemp.innerHTML = Math.round(day.temp.max);
+			minTemp.innerHTML = Math.round(day.temp.min);
+		}
 		if (index > 0 && index < 6){
 		forecastHTML +=
 		`<div class="col-2 current_info forecast_week_day pt-2 pb-2">
 			${formateDay(day.dt)}
 			<img src="icons/${day.weather[0].icon}.svg" alt="${day.weather[0].description}">
 			<div class="forecast_temperature row">
-				<span class="forecast_temperature_max col-6">${Math.round(day.temp.max)}°</span>
-				<span class="forecast_temperature_min col-6">${Math.round(day.temp.min)}°</span>
+				<span>${Math.round(day.temp.max)}°</span>
+				<span>${Math.round(day.temp.min)}°</span>
 			</div>
 		</div>`;
 		}

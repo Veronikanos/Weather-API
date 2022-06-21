@@ -97,14 +97,13 @@ h1{
 .list{
 	margin: 5% 0;
 	padding: 0;
-	/* font-size: 100%; */
 }
 
 .padding_block_top{
-	padding-bottom: 3%;
+	padding-top: 3%;
 }
 
-.padding_block_bottom, .forecast_week_day{
+.forecast_week_day{
 	padding-bottom: 7%;
 	text-shadow: 2px 2px 10px rgb(208, 208, 211);
 	text-align: center;
@@ -116,23 +115,28 @@ h1{
 
 .change_units{
 	position: relative;
-	top: 6px;
+	top: -22px;
 	padding-left: 15px;
+	font-size: 2vh;
 }
 
 #icon{
 	width: 60%;
 }
 
-.forecast_temperature{
-	color: #f1efef;
-	/* display: inline-flex; */
+#uv_index img,
+#max_uv_index img,
+li img{
+	width: 30%;
 }
 
-.forecast_temperature span{
-	/* display: inline-block; */
-	/* justify-content: flex-end; */
-}
+/* li img{
+	padding: 0;
+} */
+
+/* .max_min img{
+	width: 30%;
+} */
 
 .forecast_temperature_min{
 	opacity: 70%;
@@ -148,5 +152,14 @@ h1{
 	.main_block {
 		width: 100%;
 	}
+	h1{
+		color: red !important;
+	}
 }
 
+@media (min-width: 1400px) {
+	/* h1{
+		color: red;
+	} */
+	
+}
