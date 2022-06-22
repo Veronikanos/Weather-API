@@ -112,7 +112,7 @@ function displayForecast(response){
 
 		if (index === 0){
 			if (Math.round(current.uvi) === 0){
-				uvIndex.innerHTML = `< <img src="icons/extra icons/uv-index-1.svg" alt="uv index ${current.uvi}">`;
+				uvIndex.innerHTML = `&#5176;<img src="icons/extra icons/uv-index-1.svg" alt="uv index ${current.uvi}">`;
 			} else {
 				uvIndex.innerHTML = `<img src="icons/extra icons/uv-index-${Math.round(current.uvi)}.svg" alt="uv index ${current.uvi}">`;
 			}
