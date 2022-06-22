@@ -107,7 +107,7 @@ function displayForecast(response){
 	const precipitation = document.querySelector("#precipitation");
 		console.log(forecast);
 
-	let forecastHTML = `<div class="row pt-4">`;
+	let forecastHTML = `<div class="row">`;
 	forecast.forEach((day, index) => {
 
 		if (index === 0){

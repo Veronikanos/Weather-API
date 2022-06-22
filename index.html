@@ -9,7 +9,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Noto+Sans:ital,wght@0,100;0,300;0,500;0,700;1,700&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,300;0,500;0,700;1,700&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/c151ebe296.js" crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
@@ -37,14 +37,14 @@
 					<h1 class="header1 text-center fw-normal"></h1>
 					<h6 class="text-center last_updated">Last updated: <span id="data_time"></span></h6>
 					<div class="row padding_block_top">
-						<div class="col-6">
+						<div class="col-6 left_padding">
 							<ul class="list list-unstyled">
 								<li>Humidity: <span id="humidity"></span>%</li>
 								<li>Wind: <span id="wind"></span> km/h</li>
 								<li>Precipitation: <span id="precipitation"></span>%</li>
 							</ul>
 						</div>
-							<div class="col-6 temperature_block flex-column">
+							<div class="col-6 temperature_block flex-column left_padding">
 								<div class="temperature display-4 fw-normal d-flex">
 									<span id="current_temperature"></span>
 									<span class="active change_units" id="celcius">°C</span>
@@ -55,16 +55,16 @@
 							</div>
 					</div>
 					<div class="row ">
-						<div class="col-6 d-flex align-items-center">
+						<div class="col-6 d-flex align-items-center left_padding">
 							<img src="" alt="" id="icon">
 						</div>
-						<div class="col-6 d-flex align-items-center">
+						<div class="col-6 d-flex align-items-center status_weather left_padding">
 								<h4 class="header3" id="status_weather"></h4>
 						</div>
 					</div>
 			</div>
 		</div>
-		<div class="main_block current_info p-2 ffe">
+		<div class="main_block current_info p-2">
 			<div class="current_day">
 				<div class="row uvi">
 					<div class="col-6">UV index: <span id="uv_index"></span></div>
