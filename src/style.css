@@ -1,3 +1,7 @@
+:root{
+	--color-text: #f1efef;
+}
+
 .main_block{
 	max-width: 65vh;
 	margin: 0 auto;
@@ -91,7 +95,7 @@ div .button_input:hover{
 .header3, 
 .image_icon,
 .forecast_temperature{
-	color: #f1efef;
+	color: var(--color-text);
 	text-shadow: 2px 1px 4px rgb(30, 30, 31);
 }
 
@@ -146,11 +150,17 @@ li img{
 }
 
 .max_min{
-	color: #f1efef;
+	color: var(--color-text);
 	text-shadow: 1px 0 1px rgba(0, 0, 0, 0.511), 
 	0 1px 1px rgba(0, 0, 0, 0.511),  
 	-1px 0 1px rgba(0, 0, 0, 0.511), 
 	0 -1px 1px rgba(0, 0, 0, 0.511);
+	display: flex;
+}
+
+div .mm{
+	justify-content: space-between;
+	flex: 1;
 }
 
 footer{
@@ -160,7 +170,7 @@ footer{
 
 footer a{
 	text-decoration: none;
-	color: #f1efef;
+	color: var(--color-text);
 }
 
 @media (max-width: 1000px) {
@@ -236,10 +246,6 @@ footer a{
 	.uvi div{
 		padding-right: 0;
 	}
-	.max_min,
-	ul{
-		font-size: 60%;
-	}
 	.current_info{
 		padding-right: 2% !important;
 		padding-left: 2% !important;
@@ -255,5 +261,27 @@ footer a{
 	}
 	.status_weather > h4{
 		width: 75%
+	}
+}
+
+@media (max-width: 270px){
+	.max_min,
+	ul{
+		font-size: 60%;
+	}
+}
+
+@media (max-width: 235px){
+	.status_weather > h4{
+		font-size: 80%;
+	}
+	.uvi{
+		font-size: 60%;
+	}
+	.forecast_week_day{
+		font-size: 60%;
+	}
+	.max_min{
+		display: block;
 	}
 }
