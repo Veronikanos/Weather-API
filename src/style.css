@@ -149,6 +149,10 @@ li img{
 	width: 30%;
 }
 
+.uv{
+	align-self: center;
+}
+
 .max_min{
 	color: var(--color-text);
 	text-shadow: 1px 0 1px rgba(0, 0, 0, 0.511), 

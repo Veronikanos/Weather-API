@@ -87,8 +87,6 @@ searchCityButton.addEventListener("submit", (event) => {
 	}
 });
 
-//___________________________
-
 function formateDay(timestamp){
 	const date = new Date(timestamp * 1000);
 	const day = date.getDay();
@@ -112,7 +110,7 @@ function displayForecast(response){
 
 		if (index === 0){
 			if (Math.round(current.uvi) === 0){
-				uvIndex.innerHTML = `&#5176;<img src="icons/extra icons/uv-index-1.svg" alt="uv index ${current.uvi}">`;
+				uvIndex.innerHTML = `<i class="fa-solid fa-0"></i>`;
 			} else {
 				uvIndex.innerHTML = `<img src="icons/extra icons/uv-index-${Math.round(current.uvi)}.svg" alt="uv index ${current.uvi}">`;
 			}
