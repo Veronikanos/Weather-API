@@ -1,5 +1,5 @@
 # Weather-API
-My first project in front-end development maden at shecodes.io workshops and hosted at netlify: https://astounding-beignet-0139c2.netlify.app
+My first web-application and project in front-end development maden at shecodes.io workshops and hosted at netlify: https://astounding-beignet-0139c2.netlify.app
 
 A web app for searching weather conditions at your current location or across more than 200,000 cites around the world. View the current temperature, man and max temperature of current day, precipitation, humidity, windspeed, UV index, and a 5-day forecast including minimum and maximum temperatures for the day.
 A real-time weather app built using HTML, advanced CSS, Bootstrap, vanilla JavaScript and Weather API https://openweathermap.org/. 
