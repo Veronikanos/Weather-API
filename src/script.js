@@ -103,7 +103,6 @@ function displayForecast(response){
 	const maxTemp = document.querySelector("#max_t");
 	const minTemp = document.querySelector("#min_t");
 	const precipitation = document.querySelector("#precipitation");
-		console.log(forecast);
 
 	let forecastHTML = `<div class="row">`;
 	forecast.forEach((day, index) => {
@@ -115,7 +114,7 @@ function displayForecast(response){
 				uvIndex.innerHTML = `<img src="icons/extra icons/uv-index-${Math.round(current.uvi)}.svg" alt="uv index ${current.uvi}">`;
 			}
 			maxUvIndex.innerHTML = `<img src="icons/extra icons/uv-index-${Math.round(day.uvi)}.svg" alt="uv index ${day.uvi}">`;
-			precipitation.innerHTML = day.pop * 100;
+			precipitation.innerHTML = parseInt(day.pop * 100);
 			maxTemp.innerHTML = Math.round(day.temp.max);
 			minTemp.innerHTML = Math.round(day.temp.min);
 		}
